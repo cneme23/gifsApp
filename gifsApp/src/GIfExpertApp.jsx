@@ -6,8 +6,10 @@ export const GifExpertApp = () =>{
 //Aca defino estados y funciones 
     const [categories, setCategories]= useState(["Dragon Ball", "Pokemon"]);
     
-    const onAddCategory = () => {
-         setCategories([...categories, "Nuevo valor"] );
+    const onAddCategory = (newCategory) => {
+        if(categories.includes(newCategory))  return; 
+        
+         setCategories([...categories, newCategory] );
     }   
    
     return (
@@ -16,7 +18,7 @@ export const GifExpertApp = () =>{
         <h1>Giff Appppp</h1>
         {/* <button onClick={()=>onAddCategory()}>Agregar categoria</button>
      */}
-        <AddCategory setCategories={setCategories}/>
+        <AddCategory onNewCategory={onAddCategory} />
     {/* Listado de categorias */}
     <ol>
         {
